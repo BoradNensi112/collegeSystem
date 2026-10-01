@@ -25,7 +25,7 @@ import {
   FiUser,
   FiChevronRight
 } from "react-icons/fi";
-import "../../layout/student/ViewAttendance.css";
+import "../../layout/student/viewAttendance.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5001";
 const ATTEND_API = `${API_BASE}/Attendence`;
