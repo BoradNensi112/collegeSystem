@@ -13,6 +13,8 @@ node_modules/
 dist/
 build/
 Frontend/collage management system/dist/
+*.zip
+*.tar.gz
 
 # Logs
 npm-debug.log*
