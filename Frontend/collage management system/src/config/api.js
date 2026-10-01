@@ -1,5 +1,5 @@
 // Centralized API Configuration for Development & Production Deployment
-export const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5001";
+export const API_BASE = import.meta.env.VITE_API_BASE || "https://busy-emus-melt.loca.lt";
 
 export const getApiUrl = (path = "") => {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
