@@ -2,8 +2,8 @@ const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
 const dbHost = process.env.DB_HOST || "127.0.0.1";
-const dbPort = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 5433;
-const dbDatabase = process.env.DB_NAME || process.env.DB_DATABASE || "navnext";
+const dbPort = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 5432;
+const dbDatabase = process.env.DB_NAME || process.env.DB_DATABASE || "NavNext";
 const dbUser = process.env.DB_USER || "postgres";
 const dbPassword = process.env.DB_PASSWORD || "nenuborad@112";
 const dbDialect = "postgres";
