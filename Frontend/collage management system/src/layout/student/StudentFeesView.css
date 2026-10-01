@@ -1,0 +1,1229 @@
+/* =========================================================
+   NEXTGEN STUDENT FEES VIEW & ONLINE PAYMENT GATEWAY
+   Sidebar-Matching Obsidian Navy Luxury Glassmorphic Theme
+   (100% Aligned with Notices / Bulletin & Attendance Theme)
+   ========================================================= */
+
+.stf-pro-root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: var(--text-primary, #f8fafc);
+  background: transparent;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+}
+
+/* Toast Alert */
+.stf-toast {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  font-weight: 700;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  animation: stf-toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(16px);
+}
+
+.stf-toast.ok {
+  background: rgba(16, 185, 129, 0.95);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.stf-toast.err {
+  background: rgba(239, 68, 68, 0.95);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+@keyframes stf-toast-in {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================================
+   1. HERO BANNER (Identical to Notice Board)
+   ========================================================= */
+.stf-hero-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 30px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.95) 0%, rgba(11, 17, 32, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.stf-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 20%;
+  width: 440px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, transparent 70%);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.stf-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.stf-live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  width: fit-content;
+}
+
+.stf-ping {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+  animation: stf-radar 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes stf-radar {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.25); }
+}
+
+.stf-live-txt {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #818cf8;
+}
+
+.stf-hero-title {
+  margin: 4px 0 0;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: var(--text-primary, #f8fafc);
+  line-height: 1.2;
+}
+
+.stf-hero-sub {
+  margin: 0;
+  color: var(--text-secondary, #94a3b8);
+  font-size: 13.5px;
+  line-height: 1.5;
+  max-width: 780px;
+}
+
+.stf-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.stf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.stf-btn-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.35);
+}
+
+.stf-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.48);
+  filter: brightness(1.08);
+}
+
+.stf-btn-secondary {
+  background: rgba(30, 41, 59, 0.7);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stf-btn-secondary:hover:not(:disabled) {
+  background: rgba(51, 65, 85, 0.85);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1.5px);
+}
+
+.stf-btn-xs {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  gap: 5px;
+}
+
+.stf-spin {
+  animation: stf-spin-anim 0.8s linear infinite;
+}
+
+@keyframes stf-spin-anim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   2. CATEGORY CHIPS STRIP (Identical to Notices)
+   ========================================================= */
+.stf-cat-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 15, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px;
+  border-radius: 16px;
+  overflow-x: auto;
+}
+
+.stf-cat-chip {
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.stf-cat-chip:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.stf-cat-chip.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(79, 70, 229, 0.35) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+/* =========================================================
+   3. DECK & FILTER PANEL (Identical to Notices)
+   ========================================================= */
+.stf-deck-panel {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.85) 0%, rgba(11, 17, 32, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.stf-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-wrap: wrap;
+}
+
+.stf-search-field {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.stf-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.stf-search-field input {
+  width: 100%;
+  padding: 10px 38px 10px 38px;
+  border-radius: 12px;
+  background: rgba(10, 15, 28, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-size: 13.5px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.stf-search-field input:focus {
+  border-color: #6366f1;
+  background: rgba(10, 15, 28, 0.95);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.stf-clear-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.stf-results-counter {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.text-success { color: #34d399; }
+.text-danger { color: #f87171; }
+.text-gold { color: #fbbf24; }
+.text-present { color: #059669; }
+
+/* =========================================================
+   4. CARDS GRID (Exact Notices Card Layout)
+   ========================================================= */
+.stf-grid-container {
+  padding: 20px;
+}
+
+.stf-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stf-notice-card {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(10, 15, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.stf-notice-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(10, 15, 28, 0.85);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+.stf-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stf-cat-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stf-cat-badge.paid {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.stf-cat-badge.partial {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.35);
+  color: #22d3ee;
+}
+
+.stf-cat-badge.due,
+.stf-cat-badge.overdue {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+.stf-date-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.stf-card-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.stf-id-tag {
+  font-size: 11px;
+  font-family: monospace;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Fee Box & Progress Track */
+.stf-fee-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.stf-fee-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stf-fee-stat {
+  color: #cbd5e1;
+}
+
+.stf-fee-stat b {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.stf-fee-due-tag {
+  font-weight: 900;
+}
+
+.stf-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.stf-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.stf-progress-fill.top {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+}
+
+.stf-progress-fill.good {
+  background: linear-gradient(90deg, #06b6d4 0%, #22d3ee 100%);
+}
+
+.stf-progress-fill.warn {
+  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.stf-progress-fill.fail {
+  background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+}
+
+.stf-card-snippet {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 13.5px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.stf-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stf-author-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.stf-foot-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stf-read-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: #34d399;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+/* Skeleton & Empty */
+.stf-skel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stf-skel-card {
+  height: 160px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%);
+  background-size: 200% 100%;
+  animation: stf-skel-anim 1.4s ease-in-out infinite;
+}
+
+@keyframes stf-skel-anim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.stf-empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.stf-empty-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: #818cf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.stf-empty-state h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.stf-empty-state p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13.5px;
+  max-width: 440px;
+}
+
+/* =========================================================
+   5. MODAL STYLING (Matching Notice Modal)
+   ========================================================= */
+.stf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 7, 15, 0.78);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  animation: stf-fade-in 0.2s ease-out;
+}
+
+@keyframes stf-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stf-modal-box {
+  width: min(600px, 100%);
+  max-height: calc(100vh - 40px);
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.98) 0%, rgba(11, 17, 32, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: stf-scale-up 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stf-print-modal-box {
+  width: min(860px, 100%);
+  max-height: calc(100vh - 40px);
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.98) 0%, rgba(11, 17, 32, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@keyframes stf-scale-up {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.stf-modal-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 15, 28, 0.6);
+  gap: 16px;
+}
+
+.stf-modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stf-modal-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.stf-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #94a3b8;
+  flex-wrap: wrap;
+}
+
+.stf-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stf-modal-close {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.stf-modal-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.stf-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stf-detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(10, 15, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 18px;
+  border-radius: 14px;
+}
+
+.stf-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: #cbd5e1;
+}
+
+.stf-detail-row b {
+  color: #ffffff;
+}
+
+.stf-detail-row.highlight {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Preset Buttons */
+.stf-preset-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stf-field-lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.stf-preset-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stf-preset-btn {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.stf-preset-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+}
+
+/* Form Fields */
+.stf-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.stf-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stf-form-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.stf-form-field input,
+.stf-form-field select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(10, 15, 28, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-size: 13.5px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.stf-form-field input:focus,
+.stf-form-field select:focus {
+  border-color: #10b981;
+  background: rgba(10, 15, 28, 0.95);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+
+.stf-upi-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(10, 15, 28, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.stf-upi-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.stf-upi-box input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(10, 15, 28, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+}
+
+.stf-card-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(10, 15, 28, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.stf-card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stf-security-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.stf-modal-footer {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background: rgba(10, 15, 28, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   6. PRINTABLE DOCUMENT STYLES
+   ========================================================= */
+.stf-receipt-document {
+  padding: 32px 36px;
+  overflow-y: auto;
+  flex: 1;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stf-doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.stf-doc-crest {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #10b981;
+  font-size: 17px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #10b981;
+  flex-shrink: 0;
+}
+
+.stf-doc-titles { flex: 1; }
+
+.stf-doc-titles h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.stf-doc-sub {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.stf-doc-contact {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.stf-doc-type-badge {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stf-doc-type-badge span {
+  font-size: 13px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.stf-doc-type-badge small {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10b981;
+  background: #ecfdf5;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+
+.stf-doc-divider {
+  height: 2px;
+  background: #e2e8f0;
+  margin: 16px 0;
+}
+
+.stf-doc-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.stf-ribbon-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stf-ribbon-item .lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.stf-ribbon-item .val {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.stf-doc-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+  margin-bottom: 20px;
+}
+
+.stf-doc-stat-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stf-doc-stat-col span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.stf-doc-stat-col b {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.stf-doc-stat-col.text-present b { color: #059669; }
+.stf-doc-stat-col.text-gold b { color: #d97706; }
+
+.stf-doc-section-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stf-doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.stf-doc-table thead th {
+  background: #f1f5f9;
+  border-bottom: 2px solid #cbd5e1;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #334155;
+  text-align: left;
+}
+
+.stf-doc-table thead th.right { text-align: right; }
+
+.stf-doc-table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 12px;
+  color: #334155;
+}
+
+.stf-doc-table tbody td.right { text-align: right; }
+.stf-doc-table tbody td.bold { font-weight: 800; }
+.stf-doc-table tbody td.text-present { color: #059669; }
+.stf-doc-table tbody td.text-gold { color: #d97706; }
+
+.stf-doc-table tfoot td {
+  padding: 10px;
+  border-top: 2px solid #0f172a;
+  font-size: 12.5px;
+  color: #0f172a;
+}
+
+.stf-doc-table tfoot td.right { text-align: right; }
+.stf-doc-table tfoot td.bold { font-weight: 800; }
+
+.font-mono { font-family: monospace; }
+
+.stf-doc-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.stf-doc-notes .note-title {
+  margin: 0 0 4px;
+  font-size: 11.5px;
+  color: #334155;
+}
+
+.stf-doc-notes .note-txt {
+  margin: 0 0 4px;
+  font-size: 11px;
+  color: #475569;
+}
+
+.stf-doc-notes .note-disc {
+  margin: 0;
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.stf-doc-signatures {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stf-doc-seal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #059669;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.stf-sign-line {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stf-sign-placeholder {
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.stf-sign-line span {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  border-top: 1px solid #94a3b8;
+  padding-top: 3px;
+  min-width: 150px;
+}
+
+/* =========================================================
+   7. PRINT STYLESHEET
+   ========================================================= */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .stf-modal-backdrop {
+    position: static;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .stf-print-modal-box {
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .stf-receipt-document,
+  .stf-receipt-document * {
+    visibility: visible;
+  }
+
+  .stf-receipt-document {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0 !important;
+    padding: 15px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
+
+/* =========================================================
+   8. RESPONSIVE
+   ========================================================= */
+@media (max-width: 860px) {
+  .stf-cards-grid,
+  .stf-skel-grid {
+    grid-template-columns: 1fr;
+  }
+  .stf-hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stf-hero-actions {
+    width: 100%;
+  }
+  .stf-doc-ribbon {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stf-doc-stats-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stf-doc-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stf-doc-ribbon,
+  .stf-doc-stats-bar {
+    grid-template-columns: 1fr;
+  }
+}

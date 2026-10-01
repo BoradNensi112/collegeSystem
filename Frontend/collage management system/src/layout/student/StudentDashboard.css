@@ -1,0 +1,86 @@
+/* ===== Sidebar Container ===== */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f1b3e, #08174a);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: 0.3s ease;
+  overflow-y: auto;
+  font-weight: 700;
+}
+
+/* Collapsed Sidebar */
+.sidebar.collapsed {
+  width: 80px;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Links */
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.2s;
+  display: block;
+}
+
+/* Hover Effect */
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Active Link */
+.sidebar a.active {
+  background: #2563eb;
+  font-weight: 600;
+}
+
+/* Logout Button */
+.logout-btn {
+  margin-top: auto;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    height: 100%;
+  }
+}

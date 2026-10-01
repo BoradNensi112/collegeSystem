@@ -1,0 +1,8 @@
+fee_id,student_id,student_name,enrollment,course,semester,year,fee_type,total_amount,paid_amount,due_date,status,note
+6,119,Rahul Sharma,BCA-2024-018,BCA,6,2026,clg,5000,5000,2026-02-20,UNPAID,
+5,118,Rahul Sharma,BCA-2024-018,BCA,6,2026,clg,5000,5000,2026-02-20,PAID,
+3,112,Kathan Patel,BCA-2024-017,BCA,6,2026,Tuition,35000,35000,2026-03-10,PAID,PAYMENT ₹20000 | CASH | - | Tue Feb 24 |
+2,101,Kathan Patel,BCA-2024-017,BCA,6,2026,Tuition,35000,35000,2026-03-10,PAID,"First installment paid
+PAYMENT ₹20000 | CASH | - | Tue Feb 24 |"
+1,101,Kathan Patel,BCA-2024-017,BCA,6,2026,Tuition,35000,35000,2026-03-10,PAID,"First installment paid
+PAYMENT ₹20000 | CASH | - | Tue Feb 24 |"

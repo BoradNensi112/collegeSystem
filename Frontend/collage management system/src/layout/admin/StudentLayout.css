@@ -1,0 +1,33 @@
+/* .layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: #1e3a8a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.sidebar a:hover {
+  color: #facc15;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background: #f4f6fb;
+} */

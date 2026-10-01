@@ -1,0 +1,1007 @@
+/* =========================================================
+   NEXTGEN FACULTY MARKS UPLOAD & EVALUATION DESK
+   Sidebar-Matching Obsidian Navy Luxury Glassmorphic Theme
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.fmu-page {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 35%),
+    radial-gradient(circle at top right, rgba(6, 182, 212, 0.14), transparent 35%),
+    linear-gradient(135deg, #071120 0%, #0b1220 45%, #111827 100%);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Background Ambient Lighting Orbs */
+.fmu-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fmu-orb-1 {
+  width: 280px;
+  height: 280px;
+  background: #4f46e5;
+  top: 40px;
+  left: 20px;
+}
+
+.fmu-orb-2 {
+  width: 320px;
+  height: 320px;
+  background: #06b6d4;
+  top: 260px;
+  right: 30px;
+}
+
+/* =========================================================
+   1. FLOATING TOAST ALERT
+   ========================================================= */
+.fmu-toast {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  backdrop-filter: blur(25px);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: fmuToastSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fmuToastSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fmu-toast.ok {
+  background: rgba(6, 78, 59, 0.95);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.fmu-toast.err {
+  background: rgba(127, 29, 29, 0.95);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+/* =========================================================
+   2. HERO COMMAND BANNER
+   ========================================================= */
+.fmu-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 32px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.95) 0%, rgba(11, 17, 32, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.fmu-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 20%;
+  width: 480px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.fmu-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.fmu-live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  width: fit-content;
+}
+
+.fmu-ping {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+  animation: fmuPulse 2s infinite ease-in-out;
+}
+
+@keyframes fmuPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.fmu-live-txt {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #93c5fd;
+  text-transform: uppercase;
+}
+
+.fmu-hero-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fmu-hero-sub {
+  margin: 0;
+  font-size: 14.5px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.fmu-hero-sub b {
+  color: #38bdf8;
+}
+
+.fmu-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   3. BUTTON SYSTEMS
+   ========================================================= */
+.fmu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.fmu-btn-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 22px -4px rgba(79, 70, 229, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fmu-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(6, 182, 212, 0.6);
+}
+
+.fmu-btn-secondary {
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.fmu-btn-secondary:hover:not(:disabled) {
+  background: rgba(51, 65, 85, 0.85);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.fmu-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fmu-spin {
+  animation: fmuSpin 1s linear infinite;
+}
+
+@keyframes fmuSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   4. FILTER & CONFIGURATION WORKBENCH
+   ========================================================= */
+.fmu-controls-panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 1fr 1.5fr 1fr;
+  gap: 14px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.85) 0%, rgba(11, 17, 32, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  align-items: center;
+}
+
+.fmu-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fmu-control-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.ctrl-icon {
+  color: #38bdf8;
+  font-size: 13px;
+}
+
+.fmu-select,
+.fmu-input {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  color: #f8fafc;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.fmu-select:focus,
+.fmu-input:focus {
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* =========================================================
+   5. CLASS PERFORMANCE ANALYTICS HUD
+   ========================================================= */
+.fmu-metrics-hud {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.fmu-hud-card {
+  border-radius: 18px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.85) 0%, rgba(11, 17, 32, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fmu-hud-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.hud-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-lbl {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.hud-icon {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.hud-icon.cyan { color: #38bdf8; }
+.hud-icon.gold { color: #fbbf24; }
+.hud-icon.green { color: #34d399; }
+.hud-icon.red { color: #f87171; }
+
+.hud-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.1;
+}
+
+.hud-val.cyan { color: #38bdf8; }
+.hud-val.gold { color: #fbbf24; }
+.hud-val.green { color: #34d399; }
+.hud-val.red { color: #f87171; }
+
+.hud-sub {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.hud-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.hud-badge.cyan {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.hud-badge.green {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+/* =========================================================
+   6. FAST ACTION BAR & STATUS FILTER PILLS
+   ========================================================= */
+.fmu-action-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.bulk-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bar-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bulk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  border: 1px solid transparent;
+}
+
+.bulk-btn.fill {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.bulk-btn.fill:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.bulk-btn.clear {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.bulk-btn.clear:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.bulk-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.search-and-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fmu-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.s-ico {
+  position: absolute;
+  left: 12px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.fmu-search-input {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 7px 14px 7px 34px;
+  font-size: 12.5px;
+  color: #f8fafc;
+  outline: none;
+  width: 220px;
+  transition: all 0.2s ease;
+}
+
+.fmu-search-input:focus {
+  border-color: #38bdf8;
+  width: 260px;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.status-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-pill {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+  color: #ffffff;
+  background: rgba(51, 65, 85, 0.9);
+}
+
+.filter-pill.active {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+  font-weight: 800;
+}
+
+.filter-pill.saved.active {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.filter-pill.entered.active {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #f59e0b;
+}
+
+.filter-pill.pending.active {
+  background: #64748b;
+  color: #ffffff;
+  border-color: #64748b;
+}
+
+/* =========================================================
+   7. INTERACTIVE MARKS ENTRY TABLE CARD
+   ========================================================= */
+.fmu-table-card {
+  position: relative;
+  z-index: 2;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(19, 28, 49, 0.9) 0%, rgba(11, 17, 32, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 45px -12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(25px);
+  overflow: hidden;
+}
+
+.fmu-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.fmu-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.fmu-table th {
+  padding: 16px 20px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.fmu-table td {
+  padding: 14px 20px;
+  font-size: 13.5px;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.fmu-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.fmu-index-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.6);
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.fmu-student-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fmu-student-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  flex-shrink: 0;
+}
+
+.fmu-student-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.fmu-student-id-sub {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.fmu-enrollment-badge {
+  font-family: monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.6);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fmu-subject-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sub-main {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.sub-exam {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Marks Input Field with Max Label */
+.fmu-marks-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 4px 10px;
+  width: fit-content;
+  transition: all 0.2s ease;
+}
+
+.fmu-marks-input-wrap:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.fmu-marks-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  width: 60px;
+  font-family: monospace;
+}
+
+.fmu-max-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 700;
+  user-select: none;
+}
+
+.fmu-pct-badge {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 800;
+  color: #cbd5e1;
+}
+
+/* Grades */
+.fmu-grade-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.fmu-grade-pill.green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.fmu-grade-pill.cyan {
+  background: rgba(6, 182, 212, 0.15);
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.fmu-grade-pill.amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.fmu-grade-pill.red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.fmu-grade-pill.none {
+  color: #64748b;
+}
+
+/* Status Pill */
+.fmu-status-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.fmu-status-pill.saved {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.fmu-status-pill.entered {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.fmu-status-pill.pending {
+  background: rgba(100, 116, 139, 0.15);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+/* Footer Actions */
+.fmu-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-left-info {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-left-info b {
+  color: #f8fafc;
+}
+
+.footer-right-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Loading & Empty States */
+.fmu-loading-box,
+.fmu-empty-box {
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #94a3b8;
+}
+
+.fmu-empty-box h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.fmu-empty-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+  max-width: 440px;
+}
+
+.empty-ico {
+  color: #38bdf8;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   8. PRINTABLE OFFICIAL GRADE SHEET
+   ========================================================= */
+.fmu-print-sheet {
+  display: none;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .fmu-page {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+  }
+
+  .fmu-bg-orb,
+  .fmu-header,
+  .fmu-controls-panel,
+  .fmu-metrics-hud,
+  .fmu-action-bar,
+  .fmu-table-card,
+  .fmu-toast {
+    display: none !important;
+  }
+
+  .fmu-print-sheet {
+    display: block !important;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    color: #000000 !important;
+  }
+
+  .print-header {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+
+  .print-header h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+  }
+
+  .print-header p {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+
+  .print-table th,
+  .print-table td {
+    border: 1px solid #333333;
+    padding: 8px 10px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .print-table th {
+    background: #f1f5f9 !important;
+    font-weight: bold;
+  }
+
+  .print-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 30px;
+    border-top: 1px solid #999999;
+    padding-top: 10px;
+  }
+}
+
+/* =========================================================
+   9. RESPONSIVE BREAKPOINTS
+   ========================================================= */
+@media (max-width: 1200px) {
+  .fmu-controls-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fmu-metrics-hud {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .fmu-page {
+    padding: 16px;
+  }
+
+  .fmu-header {
+    padding: 20px;
+  }
+
+  .fmu-hero-title {
+    font-size: 24px;
+  }
+
+  .fmu-controls-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .fmu-metrics-hud {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fmu-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-and-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .fmu-search-input {
+    width: 100%;
+  }
+
+  .fmu-table-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-right-btns {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 520px) {
+  .fmu-metrics-hud {
+    grid-template-columns: 1fr;
+  }
+}

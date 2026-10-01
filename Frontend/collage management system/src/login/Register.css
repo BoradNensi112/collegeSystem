@@ -1,0 +1,661 @@
+/* =========================================================
+   NAVNEXT REGISTRATION STYLES (Ultra-Structured Glassmorphic)
+   ========================================================= */
+
+html.navnext-register-dark,
+body.navnext-register-dark {
+  min-height: 100vh;
+  margin: 0 !important;
+  color: #f8fafc !important;
+  background:
+    radial-gradient(1100px 700px at 15% 15%, rgba(99, 102, 241, 0.22), transparent 60%),
+    radial-gradient(1100px 700px at 85% 85%, rgba(56, 189, 248, 0.16), transparent 60%),
+    linear-gradient(180deg, #070a14 0%, #0d1224 100%) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color-scheme: dark;
+  overflow-x: hidden;
+}
+
+.rgWrap {
+  min-height: 100vh;
+  padding: 24px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient Background Shaders */
+.rgGlow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rgGlow1 {
+  top: -200px;
+  left: -200px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.9), transparent 65%);
+}
+
+.rgGlow2 {
+  bottom: -200px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.85), transparent 65%);
+}
+
+/* Top Navigation */
+.rgTopNav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto 24px;
+}
+
+.rgBackBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.rgBackBtn:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: #6366f1;
+  color: #f8fafc;
+  transform: translateX(-2px);
+}
+
+.rgBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rgLogoMark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 18px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.rgBrandName {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  color: #f8fafc;
+}
+
+.rgSignInBtn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.rgSignInBtn:hover {
+  color: #818cf8;
+  text-decoration: underline;
+}
+
+/* Main Container (2-Column Balanced Architecture) */
+.rgContainer {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  position: relative;
+  z-index: 5;
+  align-items: start;
+}
+
+/* Left Column */
+.rgLeftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.rgLeftCard {
+  border-radius: 24px;
+  padding: 24px;
+  background: rgba(19, 28, 49, 0.88);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rgRoleHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.rgRoleSub {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #818cf8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.rgRoleHeader h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #f8fafc;
+  margin: 4px 0 0;
+}
+
+/* Role Selector Cards */
+.rgRoleCardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rgRoleItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(13, 18, 36, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rgRoleItem:hover {
+  background: rgba(13, 18, 36, 0.95);
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateX(2px);
+}
+
+.rgRoleItem.active {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: #6366f1;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+}
+
+.rgRoleItemIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.rgRoleItemText {
+  flex: 1;
+}
+
+.rgRoleItemTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.rgRoleItemDesc {
+  display: block;
+  font-size: 11.5px;
+  color: #94a3b8;
+}
+
+.rgRoleRadio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+}
+
+.rgRoleItem.active .rgRoleRadio {
+  border-color: #38bdf8;
+}
+
+.radioDot.checked {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
+}
+
+/* Role Info Preview Box */
+.rgRoleInfoBox {
+  border-radius: 16px;
+  background: rgba(13, 18, 36, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 14px;
+}
+
+.rgRoleInfoTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.roleIconSmall {
+  font-size: 18px;
+}
+
+.roleNameSmall {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.roleBadgeSmall {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.rgRoleInfoDesc {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Benefit List */
+.rgBenefitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.benefitRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.benIcon {
+  font-size: 14px;
+}
+
+/* Right Column (Form Card) */
+.rgRightCol .rgFormCard {
+  border-radius: 24px;
+  padding: 30px;
+  background: rgba(19, 28, 49, 0.88);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.formHeader h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #f8fafc;
+  margin: 0 0 4px;
+}
+
+.formSubtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Alert Message */
+.rgAlert {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rgAlert.ok {
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #34d399;
+}
+
+.rgAlert.err {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+/* Form Sections */
+.regFormInner {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formSectionHead {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #818cf8;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-top: 4px;
+}
+
+.secIcon {
+  font-size: 14px;
+}
+
+.rgGrid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.inputGroup label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.labelWithHelper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quickCodeBtn {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quickCodeBtn:hover {
+  background: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+}
+
+.quickCodeBtn code {
+  color: #a5b4fc;
+}
+
+.req {
+  color: #f87171;
+}
+
+.inputGroup input,
+.darkSelect {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(13, 18, 36, 0.7);
+  color: #f8fafc;
+  font-size: 13.5px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.inputGroup input::placeholder {
+  color: #64748b;
+}
+
+.inputGroup input:focus,
+.darkSelect:focus {
+  border-color: #38bdf8;
+  background: rgba(13, 18, 36, 0.9);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+}
+
+.input-err {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.06) !important;
+}
+
+.errText {
+  font-size: 11px;
+  color: #f87171;
+  font-weight: 600;
+}
+
+/* Password Input */
+.passwordField {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordField input {
+  padding-right: 38px;
+}
+
+.togglePwBtn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.togglePwBtn:hover {
+  opacity: 1;
+}
+
+/* Role Specific Nested Block */
+.roleSpecificBlock {
+  border-radius: 16px;
+  background: rgba(13, 18, 36, 0.55);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+/* Submit CTA */
+.rgSubmitBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #38bdf8 100%);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.35);
+  margin-top: 6px;
+}
+
+.rgSubmitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(99, 102, 241, 0.45);
+}
+
+.rgSubmitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btnSpinnerWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinnerIcon {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Form Footer Link */
+.formFooterSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #94a3b8;
+  padding-top: 4px;
+}
+
+.footerLinkBtn {
+  background: none;
+  border: none;
+  color: #38bdf8;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.footerLinkBtn:hover {
+  color: #818cf8;
+  text-decoration: underline;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 960px) {
+  .rgContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .rgLeftCard {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+  .rgBenefitsList {
+    display: none;
+  }
+  .rgRoleCardsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .rgRoleItem {
+    padding: 10px 8px;
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+  .rgRoleItemDesc,
+  .rgRoleRadio {
+    display: none;
+  }
+  .rgRoleItemIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 680px) {
+  .rgGrid2 {
+    grid-template-columns: 1fr;
+  }
+  .rgWrap {
+    padding: 16px 12px 36px;
+  }
+  .rgRightCol .rgFormCard {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+  .rgLeftCard {
+    border-radius: 18px;
+    padding: 14px 12px;
+  }
+  .rgTopNav {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .rgRoleCardsList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .rgRoleItemTitle {
+    font-size: 12px;
+  }
+  .formHeader h2 {
+    font-size: 19px;
+  }
+}

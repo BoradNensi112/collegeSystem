@@ -1,0 +1,25 @@
+:root {
+  --st-sbw: 260px;
+}
+
+.st-shell {
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.st-sidebar {
+  width: var(--st-sbw);
+  flex: 0 0 var(--st-sbw);
+  height: 100vh;
+  overflow: auto;
+}
+
+.st-content {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 18px;
+}

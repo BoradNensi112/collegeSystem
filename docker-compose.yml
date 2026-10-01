@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: navnext_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: navnext
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: nenuborad@112
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: navnext_backend
+    restart: always
+    depends_on:
+      - postgres-db
+    environment:
+      PORT: 5001
+      NODE_ENV: production
+      DATABASE_URL: postgres://postgres:nenuborad@112@postgres-db:5432/navnext
+      DB_SSL: "false"
+      JWT_SECRET: "navnext_secret_jwt_key_2026"
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./Frontend/collage management system
+      dockerfile: Dockerfile
+    container_name: navnext_frontend
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      VITE_API_BASE: "http://localhost:5001"
+    ports:
+      - "8080:80"
+
+volumes:
+  pgdata:
